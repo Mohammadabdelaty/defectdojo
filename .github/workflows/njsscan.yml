@@ -43,20 +43,3 @@ jobs:
         # sarif_file: results.sarif
         # path: ./reports/results.sarif
   
-  sast:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v4 
-      
-    - name: Install Semgrep
-      uses: returntocorp/semgrep-action@v1
-
-    - name: Run Semgrep and Save JSON Report
-      run: semgrep --config=auto --json > semgrep-report.json
-
-    - name: Upload Semgrep Report
-      uses: actions/upload-artifact@v4
-      with:
-        name: sast-report
-        path: semgrep-report.json
