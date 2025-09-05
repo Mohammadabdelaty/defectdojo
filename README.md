@@ -11,4 +11,7 @@ docker compose up
 In defectdojo we use `Product` instead of `Project` as eveolving process is almost permenant. so we create a product.
 Create an engagement for specifi period and link it to your product.
 Import scan result: id does `Done` and `Add Test` buttons functions and let you add import your scan.
- 
+
+# Notes for app
+
+# Notes gor git hub actions
