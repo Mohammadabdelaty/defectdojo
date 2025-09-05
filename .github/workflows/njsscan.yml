@@ -21,37 +21,42 @@ permissions:
   contents: read
 
 jobs:
-  # njsscan:
-  #   permissions:
-  #     contents: read # for actions/checkout to fetch code
-  #     security-events: write # for github/codeql-action/upload-sarif to upload SARIF results
-  #     actions: read # only required for a private repository by github/codeql-action/upload-sarif to get the Action run status
-  #   runs-on: ubuntu-latest
-  #   name: njsscan code scanning
-  #   steps:
-  #   - name: Checkout the code
-  #     uses: actions/checkout@v4
-  #   - name: nodejsscan scan
-  #     id: njsscan
-  #     uses: ajinabraham/njsscan-action@7237412fdd36af517e2745077cedbf9d6900d711
-  #     with:
-  #       args: '. --sarif --output results.json || true'
-  #   - name: Upload njsscan report
-  #     uses: github/codeql-action/upload-sarif@v3
-  #     with:
-  #       sarif_file: results.json
-  #       # sarif_file: results.sarif
-  #       # path: ./reports/results.sarif
+  github-njsscan:
+    permissions:
+      contents: read # for actions/checkout to fetch code
+      security-events: write # for github/codeql-action/upload-sarif to upload SARIF results
+      actions: read # only required for a private repository by github/codeql-action/upload-sarif to get the Action run status
+    runs-on: ubuntu-latest
+    name: njsscan code scanning
+    steps:
+    - name: Checkout the code
+      uses: actions/checkout@v4
+    - name: nodejsscan scan
+      id: njsscan
+      uses: ajinabraham/njsscan-action@7237412fdd36af517e2745077cedbf9d6900d711
+      with:
+        args: '. --sarif --output results.json || true'
+    - name: Upload njsscan report
+      uses: github/codeql-action/upload-sarif@v3
+      with:
+        sarif_file: results.json
+        # sarif_file: results.sarif
+        # path: ./reports/results.sarif
+  
   sast:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+    - name: Checkout code
+      uses: actions/checkout@v4 
+      
+    - name: Install Semgrep
+      uses: returntocorp/semgrep-action@v1
 
-      - name: CodeQL Analysis
-        uses: github/codeql-action/init@v3
-        with:
-          languages: javascript
-      - run: |
-          echo "Running CodeQL"
-        uses: github/codeql-action/analyze@v3
+    - name: Run Semgrep and Save JSON Report
+      run: semgrep --config=auto --json > semgrep-report.json
+
+    - name: Upload Semgrep Report
+      uses: actions/upload-artifact@v4
+      with:
+        name: sast-report
+        path: semgrep-report.json
