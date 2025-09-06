@@ -79,3 +79,20 @@ After all done check `Security` tab.
 # SBOM
 Stands for Software Ber Of Material
 
+Start dtrack
+
+```bash
+cd dtrack && docker compose up
+```
+use 
+Username: admin
+Password: admin
+for the frist login then change it as required.
+
+As shown before in the screen of artifacts in gitlab "semgrep"
+Carete a project in dtrack > component > Upload Bom. then upload the sbom2.json file, after uploading is successful reload the page and check the compnents again.
+
+You will see almost 301 compnent and in vulnerability tab you see what you are looking for.
+
+![alt text](screens/image6.png)
+
