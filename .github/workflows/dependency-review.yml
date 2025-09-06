@@ -1,12 +1,12 @@
 name: Dependency-review
 
 on:
-#   pull_request:
-#     branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 #     types: [opened, synchronize, reopened, ready_for_review]
 #   push:
 #     branches: [ "main" ]
-  workflow_dispatch:
+  # workflow_dispatch:
   # schedule:
   #   - cron: '44 18 * * 1'
 
