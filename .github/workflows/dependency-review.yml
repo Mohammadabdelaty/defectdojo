@@ -1,3 +1,8 @@
+# This workflow uses the Dependency Review Action to analyze dependency changes in a pull request and provide a report of security vulnerabilities that may have been introduced.
+# You need to create a new branch and pull the changes.
+# Then compare and pull request to the main branch to see the report.
+# Enable the dependancy graph from security setting in the repository.
+
 name: Dependency-review
 
 on:
