@@ -9,11 +9,12 @@
 name: njsscan sarif
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    # The branches below must be a subset of the branches above
-    branches: [ "main" ]
+  # push:
+  #   branches: [ "main" ]
+  # pull_request:
+  #   # The branches below must be a subset of the branches above
+  #   branches: [ "main" ]
+  workflow_dispatch:
   schedule:
     - cron: '44 18 * * 1'
 
