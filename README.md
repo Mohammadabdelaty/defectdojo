@@ -3,7 +3,7 @@
 This repo is a very simple project about detecting vulnerabilities in code using devops pipeline. 
 We will use defectdojo an open-source report security report viewer and cyclon for dependancies tracking.
 
-In your environment you may use gitlab as on-prem Git, in this case you will need to deploy defectdojo and cyclon to view your results.
+In your environment you may use gitlab as on-prem Git, in this case you will need to deploy defectdojo and dependency tracker to view your results.
 But in case of github, it has its' integrated vulnrability report viewer as it'll br covered in this repo.  
 
 # SAST
@@ -11,7 +11,7 @@ But in case of github, it has its' integrated vulnrability report viewer as it'l
 ## defectdojo
 As docker is better than install in OS, we will go with it.
 
-While inititing the dokcer compose you'd better check latest log of initializer to get randomly generated admin password each time you run the containers.
+* While inititing the dokcer compose you'd better check latest log of initializer to get randomly generated admin password each time you run the containers.
 
 ```bash
 cd defectdojo && docker compose up
@@ -74,4 +74,8 @@ After all done check `Security` tab.
 
 ![alt text](screens/image-5.png)
 * Still denying 🤭
+
+
+# SBOM
+Stands for Software Ber Of Material
 
